@@ -1,0 +1,38 @@
+<div class="container-xl">
+  <div class="header">
+    <p class="h2 mt-4 opacity-75">Products</p>
+  </div>
+  <div class="row row-cols-2 row-cols-md-5 g-3">
+    <div class="col" *ngFor="let product of products">
+      <div class="card rounded-3 h-100 mt-3 shadow" role="button" style="border: none;"
+        [routerLink]="['/products', product.id]">
+        <div class="crop-img">
+          <img class="card-img-top imgOfProduct" [src]="product.image" alt="Product Image">
+        </div>
+        <div class="card-body" style="height: 60px; width: 100%;">
+          <div class="card-title h-3">
+            <a class="titleOfProduct" [title]="product.name + ' details'">
+              {{ product.name }}
+            </a>
+          </div>
+          <div class="card-text">
+            <p class="opacity-75">
+              {{ product.price | currency}}
+            </p>
+          </div>
+        </div>
+        <div class="card-footer d-grid gap-2 d-flex justify-content-md-end" style="border: none;">
+          <div>
+            <button class="btn text-light share-btn btn-sm" type="button" (click)="share()">
+              <i class="bi bi-box-arrow-in-up-right"></i>
+            </button>
+          </div>
+          <div>
+            <app-product-alerts [product]="product" (notify)="onNotify()">
+            </app-product-alerts>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

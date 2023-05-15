@@ -1,0 +1,13 @@
+<div class="container-xl">
+    <div class="header">
+        <p class="h2 mt-4 opacity-75">Shipping Price</p>
+    </div>
+    <div *ngFor="let shipping of shippingCosts | async">
+        <div class="card mt-2 col-md-4 rounded-3 bg-body-tertiary opacity-50">
+            <div class="card-body d-flex justify-content-between">
+                <div class="h-3">{{ shipping.type }}</div>
+                <div class="h-3">{{ shipping.price | currency }}</div>
+            </div>
+        </div>
+    </div>
+</div>
